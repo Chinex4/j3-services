@@ -211,7 +211,7 @@ var serviceswiper = new Swiper(".service-swiper", {
         loop: true,
         speed: 1500,
         autoplay: {
-          delay: 7000,
+          delay: 3000,
           disableOnInteraction: false,
         },
         pagination: {

@@ -233,12 +233,12 @@
 									<h4>Our Address</h4>
 									<p class="mb-0">
 										Head Office: <br>
-										Block 7, 3rd Floor, Flat 3, Rivtaf Golf Estate,
-										Port Harcourt, Rivers State, Nigeria <br> <br>
+										16 Rumuokwurushi Street,
+										Rumuomasi, Port Harcourt, Rivers State, Nigeria <br> <br>
 
 										Branch Office: <br>
-										16 Rumuokwurushi Street,
-										Rumuomasi, Port Harcourt, Rivers State, Nigeria
+										Block 7, 3rd Floor, Flat 3, Rivtaf Golf Estate,
+										Port Harcourt, Rivers State, Nigeria
 
 									</p>
 								</div>
@@ -314,12 +314,11 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<select class="form-control form-select"
-												aria-label="Default select example">
-												<option selected>Select Service</option>
-												<option value="1">Industry</option>
-												<option value="2">Construction</option>
-												<option value="3">Factory</option>
+											<select class="form-control form-select" id="form_service">
+												<option value="">Select Service</option>
+												<option value="Industry">Industry</option>
+												<option value="Construction">Construction</option>
+												<option value="Factory">Factory</option>
 											</select>
 										</div>
 									</div>
@@ -334,9 +333,9 @@
 										</div>
 									</div>
 									<div class="col-md-12 mt-3">
-										<button class="themeht-btn primary-btn">
+										<button type="submit" class="themeht-btn primary-btn">
 											<span>Send Message</span>
-											<i class="flaticon flaticon-double-chevron"></i>
+											<i class="fas fa-paper-plane"></i>
 										</button>
 									</div>
 								</div>
@@ -420,57 +419,46 @@
 									</ul>
 								</div>
 								<div class="col-md-6 mt-5 mt-md-0 ps-lg-8 footer-subscribe">
-										<h5>Newsletter</h5>
-										<p>
-											Subscribe our newsletter to Get the latest news, tips and
-											special offers.
-										</p>
-										<form
-											id="mc-form"
-											class="mc-form subscribe-form">
-											<input
-												type="email"
-												value=""
-												name="EMAIL"
-												class="email"
-												id="mc-email"
-												placeholder="Email Address"
-												required="" />
-											<button
-												type="submit"
-												value="Sign up">
-												<i class="bi bi-send-fill"></i>
-											</button>
-										</form>
-										<ul
-											class="list-inline ps-0 ms-0 mt-5 footer-social social-icons">
-											<li>
-												<a href="#">
-													<i class="flaticon-facebook-app-symbol"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="flaticon-dribble"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="flaticon-instagram"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="flaticon-twitter"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="flaticon-linkedin"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
+									<h5>Newsletter</h5>
+									<p>
+										Subscribe our newsletter to Get the latest news, tips and
+										special offers.
+									</p>
+									<form id="mc-form" class="mc-form subscribe-form">
+										<input type="email" value="" name="EMAIL" class="email" id="mc-email"
+											placeholder="Email Address" required="" />
+										<button type="submit" value="Sign up">
+											<i class="bi bi-send-fill"></i>
+										</button>
+									</form>
+									<ul class="list-inline ps-0 ms-0 mt-5 footer-social social-icons">
+										<li>
+											<a href="#">
+												<i class="flaticon-facebook-app-symbol"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="flaticon-dribble"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="flaticon-instagram"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="flaticon-twitter"></i>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="flaticon-linkedin"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -549,7 +537,40 @@
 	<!--== theme-script -->
 	<script src="js/theme-script.js"></script>
 
+
+	<!-- EmailJS -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	<script>
+		// emailjs.init("OjNh00EwLaoAIXe0Q"); // Replace with your EmailJS public key
+		(function () {
+			emailjs.init("OjNh00EwLaoAIXe0Q"); // Replace with your EmailJS public key
+		})();
+	</script>
+
+	<script>
+		document.getElementById("contact-form").addEventListener("submit", function (e) {
+			e.preventDefault();
+
+			emailjs.send("service_a5k9n65", "template_5l3tt8w", {
+				name: document.getElementById("form_name").value,
+				email: document.getElementById("form_email").value,
+				phone: document.getElementById("form_phone").value,
+				service: document.getElementById("form_service").value,
+				message: document.getElementById("form_message").value,
+			})
+				.then(function () {
+					alert("Message sent successfully!");
+					document.getElementById("contact-form").reset();
+				}, function (error) {
+					alert("Oops... Something went wrong. " + JSON.stringify(error));
+				});
+		});
+	</script>
+
+
 	<!-- inject js end -->
+
+
 </body>
 
 <!-- Mirrored from themeht.com/template/induztry/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 May 2025 22:44:31 GMT -->
